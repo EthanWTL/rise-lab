@@ -4,7 +4,7 @@ const car = document.querySelector('.gallery .carousel') || document.querySelect
 if (!car) return;
 
 
-fetch('json/gallery.json', { cache: 'no-cache' })
+fetch('../json/gallery.json', { cache: 'no-cache' })
 .then((res) => {
 if (!res.ok) throw new Error('HTTP ' + res.status);
 return res.json();

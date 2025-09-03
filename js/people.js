@@ -129,7 +129,7 @@
   }
 
   // ---- Fetch & render ----
-  fetch("json/students.json", { cache: "no-cache" })
+  fetch("../json/students.json", { cache: "no-cache" })
     .then((res) => {
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();

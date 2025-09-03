@@ -76,7 +76,7 @@
     return card;
   }
 
-  fetch('json/publications.json', { cache: 'no-cache' })
+  fetch('../json/publications.json', { cache: 'no-cache' })
     .then((res) => { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
     .then((data) => {
       const items = Array.isArray(data) ? data : (data.publications || []);
