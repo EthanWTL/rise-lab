@@ -33,7 +33,7 @@
     return (parts.y || 0) * 10000 + (parts.m || 0) * 100 + (parts.d || 0);
   }
 
-  fetch('news.json', { cache: 'no-cache' })
+  fetch('json/news.json', { cache: 'no-cache' })
     .then((res) => {
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json();
