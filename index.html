@@ -13,15 +13,14 @@
 
 <header class="site-header" role="banner">
 <div class="container header-inner">
-<a class="brand" href="/">
-<span class="logo" aria-hidden="true"></span>
-<span>RISE Lab</span>
+<a class="brand" href="index.html">
+<span>Reasoning and Knowledge Discovery (RISE) Lab</span>
 </a>
 <nav aria-label="Primary">
-<a href="#">People</a>
-<a href="#">Publications</a>
-<a href="#">Projects</a>
-<a href="#">Contact</a>
+<a href="index.html">Home</a>
+<a href="news.html">News</a>
+<a href="people.html">People</a>
+<a href="publications.html">Publications</a>
 </nav>
 </div>
 </header>
@@ -32,19 +31,18 @@
 <section class="hero">
 <div class="hero-card grid-two">
 <div>
-<h1>Reasoning and Knowledge Discovery (RISE) Lab</h1>
-<p class="subtitle">Welcome to RISE Lab</p>
-<div class="cta-row">
-<a class="btn btn-primary" href="#">Join the lab</a>
-<a class="btn btn-secondary" href="#">Read our papers</a>
+<h1>RISE Lab : </h1>
+<h1>Reasoning and Knowledge Discovery</h1>
+<div class="cta-row" style="padding:10px">
+<a class="btn btn-primary" href="people.html">See our people</a>
+<a class="btn btn-primary" href="#">Read our papers</a>
 </div>
 </div>
 <div>
 <p><strong>About the lab.</strong> The RISE Lab focuses on trustworthy representation learning (robustness, fairness, causality, transferability) for computer vision and natural language understanding. We build models that generalize, explain, and serve people, drawing on user modeling and interdisciplinary collaborations. Our methods power applications in educational measurement, bioinformatics and biomedical informatics, and public health.</p>
 <ul>
-<li>Core areas: <em>Generative modeling, optimization, robustness</em></li>
-<li>Affiliations: <em>Your University / Institute</em></li>
-<li>Email: <a href="mailto:lab@example.edu">lab@example.edu</a></li>
+<li>Core areas: <em>Trustworthy Representation Learning, Computer Vision, Interdisciplinary Applications</em></li>
+<li>Affiliations: <em>University of Viriginia School of Data Science</em></li>
 </ul>
 </div>
 </div>
@@ -53,25 +51,24 @@
 
 <!-- LATEST NEWS -->
 <section aria-labelledby="news-heading">
-<h2 id="news-heading" class="section-title">Latest News</h2>
-<div class="news-list">
-<article class="news-item">
-<time datetime="2025-08-20">Aug 20, 2025</time>
-<h3><a href="#">Paper accepted to NeurIPS</a></h3>
-<p>Our work on spatial diffusion for path planning was accepted to the main conference. Camera-ready soon.</p>
-</article>
-<article class="news-item">
-<time datetime="2025-07-10">Jul 10, 2025</time>
-<h3><a href="#">New dataset release</a></h3>
-<p>We released MazeFlow‑10K for optical‑flow‑driven navigation tasks. Code and docs on GitHub.</p>
-</article>
-<article class="news-item">
-<time datetime="2025-05-05">May 5, 2025</time>
-<h3><a href="#">Welcome new students</a></h3>
-<p>We’re excited to welcome three new PhD students and two undergrads joining the lab this summer.</p>
-</article>
-</div>
+<h2 id="news-heading" class="section-title">Latest News <a style="font-size: 15px;" href="news.html">Read More -></a> </h2>
+<div class="news-list" data-limit="12"></div>
 </section>
+
+
+<!-- GALLERY / IMAGE CAROUSEL -->
+<section class="gallery" aria-labelledby="gallery-heading">
+  <h2 id="gallery-heading" class="section-title">Gallery</h2>
+
+  <div class="carousel"></div>
+
+  <!-- Optional: if you already have these, keep them; if not, the script will create them -->
+  <div class="carousel-controls">
+    <a href="#" id="prev-slide" class="btn btn-secondary" aria-label="Previous slide">Prev</a>
+    <a href="#" id="next-slide" class="btn btn-secondary" aria-label="Next slide">Next</a>
+  </div>
+</section>
+
 </main>
 
 
@@ -86,5 +83,23 @@
 // Auto‑update footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+<script>
+//image carusel
+(function () {
+const car = document.querySelector(".carousel");
+if (!car) return;
+const prev = document.getElementById("prev-slide");
+const next = document.getElementById("next-slide");
+
+function stepWidth() { return car.clientWidth; } // one full slide at a time
+function go(dir) { car.scrollBy({ left: dir * stepWidth(), behavior: "smooth" }); }
+
+prev?.addEventListener("click", (e) => { e.preventDefault(); go(-1); });
+next?.addEventListener("click", (e) => { e.preventDefault(); go(1); });
+})();
+</script>
+
+<script src="news.js?v=2" defer></script>
+<script src="gallery.js" defer></script>
 </body>
 </html>

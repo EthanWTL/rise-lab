@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RISE Lab — Home</title>
+<meta name="description" content="Replace this with a short description of your lab." />
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+
+<header class="site-header" role="banner">
+<div class="container header-inner">
+<a class="brand" href="index.html">
+<span>Reasoning and Knowledge Discovery (RISE) Lab</span>
+</a>
+<nav aria-label="Primary">
+<a href="index.html">Home</a>
+<a href="news.html">News</a>
+<a href="people.html">People</a>
+<a href="publications.html">Publications</a>
+</nav>
+</div>
+</header>
+
+
+
+<main id="main" class="container" role="main">
+    <!-- Lab Director -->
+    <section class="people-section director">
+        <div class="people-grid single">
+            <h2 class="section-title">Lab Director</h2>
+            <article class="person-card">
+                <img class="avatar" src="images/people/ShengLi_2025.jpg" alt="Portrait of Sheng Li" />
+                <h3 class="person-name"><a href="#">Sheng Li</a></h3>
+                <p class="person-role">Assistant Professor</p>
+                <div class="person-links" aria-label="Links for Sheng Li">
+                    <a class="icon-btn" href="mailto:shengli@example.edu" aria-label="Email">📫︎</a>
+                    <a class="icon-btn" href="#" aria-label="Google Scholar">🎓</a>
+                    <a class="icon-btn" href="#" aria-label="GitHub">🐙</a>
+                    <a class="icon-btn" href="#" aria-label="Homepage">🏠</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Ph.D. Students -->
+    <section class="people-section">
+        <h2 class="section-title">Ph.D. Students</h2>
+        <div id="phd-grid" class="people-grid"></div>  
+    </section>
+
+    <!--master-->
+    <section>
+        <h2 class="section-title">Master Students</h2> 
+        <div id="ms-grid" class="people-grid"></div>
+    </section>
+
+    <!-- Undergraduate Students (data-driven) -->
+    <section class="people-section">
+    <h2 class="section-title">Undergraduate Students</h2>
+    <div id="ug-grid" class="people-grid"></div>
+    </section>
+
+    <!-- Alumni (names only, grouped by degree level) -->
+    <section class="people-section">
+    <h2 class="section-title">Alumni</h2>
+
+    <h3 class="subsection-title">Ph.D.</h3>
+    <ul id="alumni-phd-list" class="alumni-list"></ul>
+
+    <h3 class="subsection-title">M.S.</h3>
+    <ul id="alumni-ms-list" class="alumni-list"></ul>
+
+    <h3 class="subsection-title">Undergraduate</h3>
+    <ul id="alumni-ug-list" class="alumni-list"></ul>
+    </section>
+</main>
+
+
+<footer>
+<div class="container">
+© <span id="year"></span> Reasoning and Knowledge Discovery (RISE) Lab· <a href="#">GitHub</a> · <a href="#">Twitter</a>
+</div>
+</footer>
+
+
+<script src="people.js" defer></script>
+
+
+</body>
+</html>
