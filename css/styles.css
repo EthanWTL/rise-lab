@@ -313,3 +313,74 @@ font-size: 18px; line-height: 1; user-select: none;
   flex-direction: column;
   gap: 16px;                               /* one card per row with spacing */
 }
+
+
+
+/* Full-bleed strip */
+.hero-strip {
+  position: relative;
+  width: 100vw;            /* truly full width */
+  margin-left: 50%;
+  transform: translateX(-50%);
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  min-height: clamp(360px, 60vh, 640px);
+  display: flex;
+  align-items: end;        /* pushes content lower */
+}
+
+/* Page-specific image (home page) */
+.hero-strip.home-hero {
+  /* add a soft gradient for legibility */
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 75%),
+    url("../images/bg/uvads.jpg");   /* ← change to your path */
+}
+
+/* Inner box with your site width */
+.hero-inner {
+  width: min(100%, var(--maxw));  /* reuses your --maxw setting */
+  margin-inline: auto;
+  padding: clamp(24px, 6vw, 72px) 20px;
+  color: #fff;
+}
+
+/* Titles over the image */
+.hero-title {
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.05;
+  font-size: clamp(32px, 6vw, 64px);
+  text-shadow: 0 2px 14px rgba(0,0,0,.35);
+}
+.hero-sub {
+  margin: 6px 0 0;
+  font-weight: 600;
+  line-height: 1.15;
+  font-size: clamp(18px, 3.2vw, 28px);
+  opacity: .95;
+}
+
+/* Buttons on image: higher contrast */
+.hero-strip .btn.btn-primary {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(4px);
+}
+.hero-strip .btn.btn-primary:hover { background: rgba(255,255,255,0.16); }
+
+/* Optional: if you want the image not to break out of the container,
+   delete width/margin/transform on .hero-strip and keep everything else. */
+
+   /* 1) Remove the gap between header and hero */
+section.hero-strip { margin-block: 0; }   /* overrides section { margin-block: 40px } */
+#main { padding-top: 0; }                 /* your .container adds 20px; zero it for the home page */
+/* If you prefer not to change #main globally, use this instead: */
+/* #main > .hero-strip { margin-top: -20px; }  /* cancels the container's top padding only for the hero */ 
+
+/* 2) Offset the background image upward (show more of the top of the photo) */
+.hero-strip.home-hero {
+  background-position: center 50%;        /* try 20–40% until it looks right */
+}
