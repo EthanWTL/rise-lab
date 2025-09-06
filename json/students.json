@@ -87,6 +87,39 @@
       "scholar": "sample",
       "github": "sample",
       "website": "sample"
+    },
+    {
+      "name": "Wenhao Zhang",
+      "start": "Fall 2025",
+      "end": "",
+      "co_advisor": "",
+      "img": "images/people/whz.jpg",
+      "email": "",
+      "scholar": "https://scholar.google.com/citations?hl=en&user=8DDM3o0AAAAJ",
+      "github": "",
+      "website": ""
+    },
+    {
+      "name": "Pinqiao Wang",
+      "start": "Fall 2025",
+      "end": "",
+      "co_advisor": "",
+      "img": "images/people/pqw.jpg",
+      "email": "",
+      "scholar": "https://scholar.google.com/citations?hl=en&user=V5daYRMAAAAJ",
+      "github": "",
+      "website": "https://pinqiaowang.github.io/"
+    },
+    {
+      "name": "Yuyang Cheng",
+      "start": "Fall 2025",
+      "end": "",
+      "co_advisor": "",
+      "img": "images/people/icon.png",
+      "email": "",
+      "scholar": "",
+      "github": "",
+      "website": ""
     }
   ],
   "ms_students": [
@@ -104,39 +137,6 @@
     {
       "name": "Tongxuan Tian",
       "start": "Fall 2023",
-      "end": "",
-      "co_advisor": "",
-      "img": "images/people/icon.png",
-      "email": "",
-      "scholar": "",
-      "github": "",
-      "website": ""
-    },
-    {
-      "name": "Wenhao Zhang",
-      "start": "Fall 2025",
-      "end": "",
-      "co_advisor": "",
-      "img": "images/people/whz.png",
-      "email": "",
-      "scholar": "https://scholar.google.com/citations?hl=en&user=8DDM3o0AAAAJ",
-      "github": "",
-      "website": ""
-    },
-    {
-      "name": "Pinqiao Wang",
-      "start": "Fall 2025",
-      "end": "",
-      "co_advisor": "",
-      "img": "images/people/pqw.png",
-      "email": "",
-      "scholar": "https://scholar.google.com/citations?hl=en&user=V5daYRMAAAAJ",
-      "github": "",
-      "website": "https://pinqiaowang.github.io/"
-    },
-    {
-      "name": "Yuyang Cheng",
-      "start": "Fall 2025",
       "end": "",
       "co_advisor": "",
       "img": "images/people/icon.png",
