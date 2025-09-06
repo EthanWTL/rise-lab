@@ -1,6 +1,11 @@
 {
     "images": [
         {
+            "src": "images/carousel/Barbecue.jpg",
+            "alt": "Students collaborating on a whiteboard in the lab",
+            "caption": "Free Food!"
+        },
+        {
             "src": "images/carousel/1.jpg",
             "alt": "Students collaborating on a whiteboard in the lab",
             "caption": "Strawberry!"
