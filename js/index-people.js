@@ -18,17 +18,13 @@
     const article = document.createElement("article");
     article.className = "person-card row";
 
-    const nameHTML = (p.website && p.website !== "sample")
-      ? `<a href="${p.website}" rel="noopener">${p.name}</a>`
-      : p.name;
-
     article.innerHTML = `
       <div class="person-media">
         <img class="portrait" src="${p.img || 'images/people/placeholder.jpg'}"
              alt="Portrait of ${p.name}" loading="lazy" decoding="async">
       </div>
       <div class="person-info">
-        <h3 class="person-name">${nameHTML}</h3>
+        <h3 class="person-name">${p.name}</h3>
         ${p.role ? `<p class="person-role">${p.role}</p>` : `<p class="person-role"></p>`}
         <p class="person-bio">${p.description || ""}</p>
         <div class="person-links" aria-label="Links for ${p.name}"></div>

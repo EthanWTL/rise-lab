@@ -1,163 +1,118 @@
-/* people.js — populate People page from students.json
-   - No "Year N" labels
-   - Icons row, then meta lines (co-advisor + start–end)
-   - Alumni grouped into Ph.D. / M.S. / Undergraduate and rendered one-line:
-     "Name (Degree): period, Co-advisor: X, First Employment: Y"
+/* people.js — People page (unified grid + alumni lists)
+   Card shows: Name, Role (under name), Description, Icon links, Portrait left
+   Outside top bar color varies by level: advisor | phd | ms | ug
 */
 (function () {
-  function makeIcon(href, label, glyph) {
-    if (!href || href === "#") return null;
-    const link = label === "Email" && !/^mailto:/i.test(href) ? `mailto:${href}` : href;
+  const grid = document.getElementById("people-page-list");
+  if (!grid) return;
 
+  // build a single icon button (hidden if no link)
+  function icon(href, aria, glyph) {
+    if (!href || href === "#" || href === "sample") return null;
     const a = document.createElement("a");
     a.className = "icon-btn";
-    a.setAttribute("aria-label", label);
+    a.setAttribute("aria-label", aria);
     a.textContent = glyph;
-    a.href = link;
-
-    if (/^https?:\/\//i.test(link)) {
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-    }
+    a.href = aria === "Email" && !/^mailto:/i.test(href) ? `mailto:${href}` : href;
+    if (/^https?:\/\//i.test(a.href)) { a.target = "_blank"; a.rel = "noopener noreferrer"; }
     return a;
   }
 
-  function formatPeriod(start, end) {
-    const s = (start || "").trim();
-    const e = (end || "").trim();
-    if (!s && !e) return "";
-    if (s && !e) return `${s} - `;
-    if (s && e)  return `${s} - ${e}`;
-    return `- ${e}`; // only end provided
+  function makeCard(p) {
+    const article = document.createElement("article");
+    article.className = "person-card row";
+
+    article.innerHTML = `
+      <div class="person-media">
+        <img class="portrait" src="${p.img || 'images/people/placeholder.jpg'}"
+             alt="Portrait of ${p.name}" loading="lazy" decoding="async">
+      </div>
+      <div class="person-info">
+        <h3 class="person-name">${p.name}</h3>
+        <p class="person-role">${p.role || ""}</p>
+        <p class="person-bio">${p.description || ""}</p>
+        <div class="person-links" aria-label="Links for ${p.name}"></div>
+      </div>
+    `;
+
+    const links = article.querySelector(".person-links");
+    [ icon(p.email,"Email","📫︎"),
+      icon(p.scholar,"Google Scholar","🎓"),
+      icon(p.github,"GitHub","🐙"),
+      icon(p.website,"Homepage","🏠") ]
+      .forEach(el => el && links.appendChild(el));
+
+    // OUTSIDE bar wrapper + level label for color
+    const wrap = document.createElement("div");
+    wrap.className = "person-block";
+    wrap.dataset.level = p.level;           // advisor | phd | ms | ug
+
+    const bar = document.createElement("div");
+    bar.className = "person-bar";
+    bar.setAttribute("aria-hidden", "true");
+
+    wrap.append(bar, article);
+    return wrap;
   }
 
-  function renderGrid(gridId, items) {
-    const grid = document.getElementById(gridId);
-    if (!grid) return;
-
-    grid.innerHTML = "";
-
-    items.forEach((person) => {
-      const card = document.createElement("article");
-      card.className = "person-card";
-
-      const img = document.createElement("img");
-      img.className = "avatar";
-      img.src = person.img || "images/people/placeholder.jpg";
-      img.alt = `Portrait of ${person.name}`;
-      img.loading = "lazy";
-      img.decoding = "async";
-
-      const h3 = document.createElement("h3");
-      h3.className = "person-name";
-      const nameLink = document.createElement("a");
-      nameLink.href = person.website && person.website !== "#" ? person.website : "#";
-      nameLink.textContent = person.name;
-      h3.appendChild(nameLink);
-
-      // Icons row
-      const links = document.createElement("div");
-      links.className = "person-links";
-      links.setAttribute("aria-label", `Links for ${person.name}`);
-      [
-        makeIcon(person.email,  "Email",          "✉︎"),
-        makeIcon(person.scholar,"Google Scholar", "🎓"),
-        makeIcon(person.github, "GitHub",         "🐙"),
-        makeIcon(person.website,"Homepage",       "🏠"),
-      ].forEach((el) => el && links.appendChild(el));
-
-      // Build in desired order: avatar/name -> icons -> meta lines
-      card.append(img, h3, links);
-
-      // Meta lines below icons
-      if (person.co_advisor) {
-        const p = document.createElement("p");
-        p.className = "person-meta";
-        p.textContent = `Co-advised with ${person.co_advisor}`;
-        card.append(p);
-      }
-
-      const period = formatPeriod(person.start, person.end);
-      if (period) {
-        const p = document.createElement("p");
-        p.className = "person-meta";
-        p.textContent = period;
-        card.append(p);
-      }
-
-      grid.appendChild(card);
-    });
-  }
-
-  // ---- Alumni ----
   function alumniLine(a) {
-    const period = formatPeriod(a.start, a.end);
-    const bits = [];
-
-    // "Name (Degree): period"
+    const s = (a.start || "").trim(), e = (a.end || "").trim();
     let head = a.name;
     if (a.degree) head += ` (${a.degree})`;
-    head += ":" + (period ? ` ${period}` : "");
-
+    const period = s || e ? `${s}${s && e ? " - " : s ? " - " : ""}${e}` : "";
+    const bits = [];
     if (a.co_advisor)       bits.push(`Co-advisor: ${a.co_advisor}`);
     if (a.first_employment) bits.push(`First Employment: ${a.first_employment}`);
-
-    return bits.length ? `${head}, ${bits.join(", ")}` : head;
+    return [head, period && `: ${period}`, bits.length ? `, ${bits.join(", ")}` : ""].join("");
   }
 
-  function renderAlumniList(listId, items) {
-    const list = document.getElementById(listId);
-    if (!list) return;
-    list.innerHTML = "";
-    items.forEach((a) => {
+  function renderAlumni(listId, items) {
+    const ul = document.getElementById(listId);
+    if (!ul) return;
+    ul.innerHTML = "";
+    items.forEach(a => {
       const li = document.createElement("li");
       li.className = "alumni-item";
       li.textContent = alumniLine(a);
-      list.appendChild(li);
+      ul.appendChild(li);
     });
   }
 
-  function bucketAlumni(items) {
-    const groups = { phd: [], ms: [], ug: [] };
-    items.forEach((a) => {
-      const lvl = (a.level || "").toLowerCase();
-      if (lvl === "phd" || lvl === "ph.d." || lvl === "ph.d") groups.phd.push(a);
-      else if (lvl === "ms" || lvl === "m.s." || lvl === "m.s" || lvl === "masters") groups.ms.push(a);
-      else if (lvl === "ug" || lvl === "undergrad" || lvl === "undergraduate") groups.ug.push(a);
-    });
-    return groups;
-  }
+  fetch("json/students.json", { cache: "no-store" })
+    .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(data => {
+      const out = [];
 
-  // ---- Fetch & render ----
-  fetch("json/students.json", { cache: "no-cache" })
-    .then((res) => {
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      return res.json();
+      // Advisor block
+      if (data.advisor && data.advisor.name) {
+        out.push({ ...data.advisor, level: "advisor", role: data.advisor.role || "Advisor" });
+      }
+
+      // Students — assign level + default role labels
+      (data.phd_students || []).forEach(s => out.push({ ...s, level: "phd", role: s.role || "PhD Student" }));
+      (data.ms_students  || []).forEach(s => out.push({ ...s, level: "ms",  role: s.role || "MS Student"  }));
+      (data.ug_students  || []).forEach(s => out.push({ ...s, level: "ug",  role: s.role || "Undergraduate" }));
+
+      // Render unified people grid
+      const frag = document.createDocumentFragment();
+      out.forEach(p => frag.appendChild(makeCard(p)));
+      grid.replaceChildren(frag);
+
+      // Alumni (grouped, same as before)
+      const alumni = data.alumni || [];
+      const phdAlumni = alumni.filter(a => /^(phd|ph\.d\.?)/i.test(a.level || ""));
+      const msAlumni  = alumni.filter(a => /^(ms|m\.s\.?|masters)/i.test(a.level || ""));
+      const ugAlumni  = alumni.filter(a => /^(ug|undergrad(uate)?)/i.test(a.level || ""));
+      renderAlumni("alumni-phd-list", phdAlumni);
+      renderAlumni("alumni-ms-list",  msAlumni);
+      renderAlumni("alumni-ug-list",  ugAlumni);
     })
-    .then((data) => {
-      const phd    = (data && data.phd_students) || [];
-      const ms     = (data && data.ms_students) || [];
-      const ug     = (data && data.ug_students)  || [];
-      const alumni = (data && data.alumni)       || [];
-
-      renderGrid("phd-grid", phd);
-      renderGrid("ms-grid",  ms);
-      renderGrid("ug-grid",  ug);
-
-      const buckets = bucketAlumni(alumni);
-      renderAlumniList("alumni-phd-list", buckets.phd);
-      renderAlumniList("alumni-ms-list",  buckets.ms);
-      renderAlumniList("alumni-ug-list",  buckets.ug);
-    })
-    .catch((err) => {
+    .catch(err => {
       console.error("People load error:", err);
-      ["phd-grid","ms-grid","ug-grid"].forEach((id) => {
+      grid.innerHTML = '<p class="muted">Could not load people. Check <code>json/students.json</code>.</p>';
+      ["alumni-phd-list","alumni-ms-list","alumni-ug-list"].forEach(id => {
         const el = document.getElementById(id);
-        if (el) el.innerHTML = '<p class="muted">Could not load data. Check <code>students.json</code>.</p>';
-      });
-      ["alumni-phd-list","alumni-ms-list","alumni-ug-list"].forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) el.innerHTML = '<li class="muted">Could not load alumni. Check <code>students.json</code>.</li>';
+        if (el) el.innerHTML = '<li class="muted">Could not load alumni.</li>';
       });
     });
 })();

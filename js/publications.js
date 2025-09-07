@@ -33,14 +33,9 @@
 
     const h3 = document.createElement('h3');
     h3.className = 'pub-title';
-    if (it.paper) {
-      const a = document.createElement('a');
-      a.textContent = it.title || '';
-      openExt(a, it.paper);
-      h3.appendChild(a);
-    } else {
-      h3.textContent = it.title || '';
-    }
+
+    h3.textContent = it.title || '';
+
 
     const meta = document.createElement('p');
     meta.className = 'pub-meta';

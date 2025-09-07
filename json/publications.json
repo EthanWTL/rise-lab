@@ -5,10 +5,10 @@
       "title": "VRMDiff: Text-Guided Video Referring Matting Generation of Diffusion",
       "venue": "arXiv preprint arXiv:2503.10678",
       "year": 2025,
-      "github": "temp",
-      "paper": "temp",
-      "website": "temp",
-      "image": "temp"
+      "github": "https://github.com/Hansxsourse/VRMDiff",
+      "paper": "https://www.arxiv.org/abs/2503.10678",
+      "website": "https://bio.lehanyang.info/VRMDiff.github.io/",
+      "image": "images/paper/teaser_vrmdiff.png"
     },
     {
       "authors": ["Dongliang Guo", "Mengxuan Hu", "Zihan Guan", "Thomas Hartvigsen", "Sheng Li"],
@@ -18,7 +18,7 @@
       "github": "",
       "paper": "",
       "website": "",
-      "image": "temp"
+      "image": ""
     },
     {
       "authors": ["Zihan Guan*", "Mengxuan Hu*", "Ronghang Zhu", "Sheng Li", "Anil Vullikanti"],
@@ -178,7 +178,7 @@
       "github": "",
       "paper": "",
       "website": "",
-      "image": "temp"
+      "image": ""
     },
     {
       "authors": ["Zhanwen Chen", "Tianchun Wang", "Yizhou Wang", "Michal Kosinski", "Xiang Zhang", "Yun Fu", "Sheng Li"],

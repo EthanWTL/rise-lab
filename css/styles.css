@@ -369,6 +369,18 @@ font-size: 18px; line-height: 1; user-select: none;
 .alumni-name { font-weight: 700; }
 .alumni-meta, .alumni-employment { color: var(--muted); font-size: 0.95rem; }
 
+/* --- People page: bar colors by level --- */
+.person-block[data-level="advisor"] .person-bar { background: #E57200; } /* orange */
+.person-block[data-level="phd"]     .person-bar { background: #E57200; } /* slate */
+.person-block[data-level="ms"]      .person-bar { background: #24323e; } /* brand blue */
+.person-block[data-level="ug"]      .person-bar { background: #24323e; } /* muted grey */
+
+/* (Already applied on index, but repeat here if not present)
+   Make portraits a bit larger on wider screens */
+.person-card.row { grid-template-columns: 160px 1fr; gap: 18px; }
+@media (min-width: 1024px) { .person-card.row { grid-template-columns: 180px 1fr; } }
+@media (min-width: 1280px) { .person-card.row { grid-template-columns: 200px 1fr; } }
+
 
 
 /* Publications: one card per row, info left + image right */
@@ -442,6 +454,20 @@ font-size: 18px; line-height: 1; user-select: none;
   display: flex;
   flex-direction: column;
   gap: 16px;                               /* one card per row with spacing */
+}
+
+/* Publications: make icon buttons square (match People cards) */
+.pub-links .icon-btn {
+  border-radius: 0;          /* square, not pill/circle */
+  width: 36px;               /* optional: bump to 36 for consistency */
+  height: 36px;              /* optional: larger tap target */
+  font-size: 18px;           /* optional: scale glyph a bit */
+}
+
+/* Optional: clearer keyboard focus */
+.pub-links .icon-btn:focus-visible {
+  outline: 2px solid #E57200;
+  outline-offset: 2px;
 }
 
 /* index-people */
@@ -545,3 +571,37 @@ font-size: 18px; line-height: 1; user-select: none;
 }
 
 @media (min-width: 1200px) { .people-row3 { grid-template-columns: repeat(3, 1fr); } }
+
+
+/* =========================
+   Square design overrides
+   Paste at end of styles.css
+   ========================= */
+
+/* 1) Global: no rounding anywhere that uses --radius */
+:root { --radius: 0; }
+
+/* 2) Force-square anything that had fixed radii before */
+.btn,
+.icon-btn,
+.person-card.row,
+.person-card .portrait,
+.avatar,
+.pub-card,
+.pub-thumb,
+.slide,
+.carousel,
+.hero-card,
+.news-item,
+.search-panel,
+.site-search input,
+.search-clear,
+.brand .logo {
+  border-radius: 0 !important;
+}
+
+/* (optional) If you kept any other thumbnails or images with custom rounding */
+img, .card, .thumb { border-radius: 0 !important; }
+
+/* 3) Keep borders as-is; just ensure thumbnails don’t round */
+.pub-thumb { border: 1px solid var(--btn-outline); }
