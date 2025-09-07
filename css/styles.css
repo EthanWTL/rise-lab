@@ -103,7 +103,7 @@ section { margin-block: 40px; }
   /* add a soft gradient for legibility */
   background-image:
     linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 75%),
-    url("../images/bg/uvads.jpg");   /* ← change to your path */
+    url("../images/bg/uvads3.jpg");   /* ← change to your path */
 }
 
 /* Inner box with your site width */
