@@ -80,7 +80,7 @@
       "scholar": "",
       "github": "",
       "website": "",
-      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+      "description": "Research interests in causual inference, generative models"
     },
     {
       "name": "Lehan Yang",
@@ -89,10 +89,10 @@
       "co_advisor": "",
       "img": "images/people/lhy.jpg",
       "email": "",
-      "scholar": "sample",
-      "github": "sample",
-      "website": "",
-      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+      "scholar": "https://scholar.google.com/citations?user=G25lGPEAAAAJ&hl=en",
+      "github": "",
+      "website": "https://bio.lehanyang.info/",
+      "description": "Research interests in computer vision related generation problems, included controllable generation, editing, generative dense prediction."
     },
     {
       "name": "Tianlong Wang",
@@ -100,11 +100,11 @@
       "end": "",
       "co_advisor": "",
       "img": "images/people/tlw.jpg",
-      "email": "sample",
-      "scholar": "sample",
-      "github": "sample",
-      "website": "sample",
-      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+      "email": "",
+      "scholar": "",
+      "github": "",
+      "website": "",
+      "description": "Research interests in generative modeling, model editing, NLP, CV."
     },
     {
       "name": "Wenhao Zhang",
@@ -116,7 +116,7 @@
       "scholar": "https://scholar.google.com/citations?hl=en&user=8DDM3o0AAAAJ",
       "github": "",
       "website": "",
-      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+      "description": "Research interests in "
     },
     {
       "name": "Pinqiao Wang",
@@ -128,7 +128,7 @@
       "scholar": "https://scholar.google.com/citations?hl=en&user=V5daYRMAAAAJ",
       "github": "",
       "website": "https://pinqiaowang.github.io/",
-      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+      "description": "Research interests in developing Quantitative Methods to understand agent behaviors for designing efficient algorithmic-based systems of LLM"
     },
     {
       "name": "Yuyang Cheng",
@@ -140,7 +140,7 @@
       "scholar": "https://scholar.google.com/citations?hl=en&user=fRRf-PUAAAAJ",
       "github": "",
       "website": "",
-      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+      "description": "Research interests in "
     }
   ],
   "ms_students": [
