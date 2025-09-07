@@ -71,7 +71,6 @@ header nav a { text-decoration: none; color: var(--header-text); opacity: 0.9; m
 header nav a:hover { opacity: 1; }
 
 /* Hero */
-
 .hero-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(20px, 4vw, 48px); }
 .hero h1 { font-size: clamp(28px, 5vw, 48px); margin: 0 0 8px; letter-spacing: 0.2px; }
 .hero .subtitle { color: var(--muted); margin: 0 0 12px; max-width: 70ch; }
@@ -84,19 +83,74 @@ header nav a:hover { opacity: 1; }
 section { margin-block: 40px; }
 .section-title { font-size: clamp(20px, 3vw, 28px); margin-bottom: 16px; }
 
-/* News */
-.news-list { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.news-item { background: var(--card); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
-.news-item time { font-size: 0.85rem; color: var(--muted); }
-.news-item h3 { margin: 8px 0 6px; font-size: 1.05rem; }
-.news-item p { margin: 0; color: var(--muted); }
+/* Full-bleed strip */
+.hero-strip {
+  position: relative;
+  width: 100vw;            /* truly full width */
+  margin-left: 50%;
+  transform: translateX(-50%);
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  min-height: clamp(360px, 60vh, 640px);
+  display: flex;
+  align-items: end;        /* pushes content lower */
+}
 
-footer { border-top: 1px solid rgba(17, 24, 39, 0.12); padding-block: 24px; color: var(--muted); }
+/* Page-specific image (home page) */
+.hero-strip.home-hero {
+  /* add a soft gradient for legibility */
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 75%),
+    url("../images/bg/uvads.jpg");   /* ← change to your path */
+}
 
-/* Simple responsive two-column helper */
-.grid-two { display: grid; grid-template-columns: 1fr; gap: 24px; }
-@media (min-width: 800px) { .grid-two { grid-template-columns: 1.5fr 1fr; } }
+/* Inner box with your site width */
+.hero-inner {
+  width: min(100%, var(--maxw));  /* reuses your --maxw setting */
+  margin-inline: auto;
+  padding: clamp(24px, 6vw, 72px) 20px;
+  color: #fff;
+}
 
+/* Titles over the image */
+.hero-title {
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.05;
+  font-size: clamp(32px, 6vw, 64px);
+  text-shadow: 0 2px 14px rgba(0,0,0,.35);
+}
+.hero-sub {
+  margin: 6px 0 0;
+  font-weight: 600;
+  line-height: 1.15;
+  font-size: clamp(18px, 3.2vw, 28px);
+  opacity: .95;
+}
+
+/* Buttons on image: higher contrast */
+.hero-strip .btn.btn-primary {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(4px);
+}
+.hero-strip .btn.btn-primary:hover { background: rgba(255,255,255,0.16); }
+
+/* Optional: if you want the image not to break out of the container,
+   delete width/margin/transform on .hero-strip and keep everything else. */
+
+   /* 1) Remove the gap between header and hero */
+section.hero-strip { margin-block: 0; }   /* overrides section { margin-block: 40px } */
+#main { padding-top: 0; }                 /* your .container adds 20px; zero it for the home page */
+/* If you prefer not to change #main globally, use this instead: */
+/* #main > .hero-strip { margin-top: -20px; }  /* cancels the container's top padding only for the hero */ 
+
+/* 2) Offset the background image upward (show more of the top of the photo) */
+.hero-strip.home-hero {
+  background-position: center 50%;        /* try 20–40% until it looks right */
+}
 
 /* ==========================
 Image Carousel (no deps)
@@ -141,50 +195,18 @@ background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 70%);
 .carousel-controls { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
 .carousel-controls .btn { min-width: 44px; }
 
+/* News */
+.news-list { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.news-item { background: var(--card); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+.news-item time { font-size: 0.85rem; color: var(--muted); }
+.news-item h3 { margin: 8px 0 6px; font-size: 1.05rem; }
+.news-item p { margin: 0; color: var(--muted); }
 
-.page-title { font-size: clamp(28px, 5vw, 40px); margin: 32px 0 8px; }
-.people-section { margin-block: 36px; }
-.people-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px 24px; justify-items: center; }
-.people-grid.single { grid-template-columns: 1fr; }
+footer { border-top: 1px solid rgba(17, 24, 39, 0.12); padding-block: 24px; color: var(--muted); }
 
-
-.person-card { text-align: center; }
-.avatar { width: 120px; height: 120px; border-radius: 9999px; object-fit: cover; box-shadow: var(--shadow); border: 4px solid var(--card); background: #ddd; }
-.director .avatar { width: 160px; height: 160px; }
-
-
-.person-name { margin: 12px 0 2px; font-size: 1.05rem; }
-.person-name a { color: var(--brand); text-decoration: none; font-weight: 700; }
-.person-name a:hover { text-decoration: underline; }
-.person-role { color: var(--muted); margin: 0 0 10px; }
-
-
-.person-links { display: flex; gap: 10px; justify-content: center; }
-.icon-btn {
-width: 36px; height: 36px;
-display: inline-flex; align-items: center; justify-content: center;
-border-radius: 9999px; text-decoration: none;
-background: var(--btn-bg); color: var(--brand);
-border: 1px solid var(--btn-outline);
-font-size: 18px; line-height: 1; user-select: none;
-}
-.icon-btn:hover { filter: brightness(0.98); }
-.muted { color: var(--muted); }
-
-#phd-grid, #ms-grid, #ug-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-@media (max-width: 1200px) { #phd-grid, #ms-grid, #ug-grid { grid-template-columns: repeat(4, 1fr); } }
-@media (max-width: 900px)  { #phd-grid, #ms-grid, #ug-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 640px)  { #phd-grid, #ms-grid, #ug-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 420px)  { #phd-grid, #ms-grid, #ug-grid { grid-template-columns: 1fr; } }
-
-/* Extra meta lines under names/roles */
-.person-meta { margin: 2px 0; color: var(--muted); }
-
-/* Alumni formatting */
-.alumni-item { padding: 8px 0; }
-.alumni-name { font-weight: 700; }
-.alumni-meta, .alumni-employment { color: var(--muted); font-size: 0.95rem; }
-
+/* Simple responsive two-column helper */
+.grid-two { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 800px) { .grid-two { grid-template-columns: 1.5fr 1fr; } }
 
 /* NEWS page: lock alignment with 3-column grid (Date | Title | Summary) */
 .news-list.compact { display: block !important; } /* override base grid */
@@ -239,6 +261,51 @@ font-size: 18px; line-height: 1; user-select: none;
   .news-list.compact h3,
   .news-list.compact p { grid-column: 1; }
 }
+
+/* People */
+.page-title { font-size: clamp(28px, 5vw, 40px); margin: 32px 0 8px; }
+.people-section { margin-block: 36px; }
+.people-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px 24px; justify-items: center; }
+.people-grid.single { grid-template-columns: 1fr; }
+
+
+.person-card { text-align: center; }
+.avatar { width: 120px; height: 120px; border-radius: 9999px; object-fit: cover; box-shadow: var(--shadow); border: 4px solid var(--card); background: #ddd; }
+.director .avatar { width: 160px; height: 160px; }
+
+
+.person-name { margin: 12px 0 2px; font-size: 1.05rem; }
+.person-name a { color: var(--brand); text-decoration: none; font-weight: 700; }
+.person-name a:hover { text-decoration: underline; }
+.person-role { color: var(--muted); margin: 0 0 10px; }
+
+
+.person-links { display: flex; gap: 10px; justify-content: center; }
+.icon-btn {
+width: 36px; height: 36px;
+display: inline-flex; align-items: center; justify-content: center;
+border-radius: 9999px; text-decoration: none;
+background: var(--btn-bg); color: var(--brand);
+border: 1px solid var(--btn-outline);
+font-size: 18px; line-height: 1; user-select: none;
+}
+.icon-btn:hover { filter: brightness(0.98); }
+.muted { color: var(--muted); }
+
+#phd-grid, #ms-grid, #ug-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 1200px) { #phd-grid, #ms-grid, #ug-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 900px)  { #phd-grid, #ms-grid, #ug-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px)  { #phd-grid, #ms-grid, #ug-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 420px)  { #phd-grid, #ms-grid, #ug-grid { grid-template-columns: 1fr; } }
+
+/* Extra meta lines under names/roles */
+.person-meta { margin: 2px 0; color: var(--muted); }
+
+/* Alumni formatting */
+.alumni-item { padding: 8px 0; }
+.alumni-name { font-weight: 700; }
+.alumni-meta, .alumni-employment { color: var(--muted); font-size: 0.95rem; }
+
 
 
 /* Publications: one card per row, info left + image right */
@@ -316,71 +383,3 @@ font-size: 18px; line-height: 1; user-select: none;
 
 
 
-/* Full-bleed strip */
-.hero-strip {
-  position: relative;
-  width: 100vw;            /* truly full width */
-  margin-left: 50%;
-  transform: translateX(-50%);
-  background-size: cover;
-  background-position: center 40%;
-  background-repeat: no-repeat;
-  min-height: clamp(360px, 60vh, 640px);
-  display: flex;
-  align-items: end;        /* pushes content lower */
-}
-
-/* Page-specific image (home page) */
-.hero-strip.home-hero {
-  /* add a soft gradient for legibility */
-  background-image:
-    linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 75%),
-    url("../images/bg/uvads.jpg");   /* ← change to your path */
-}
-
-/* Inner box with your site width */
-.hero-inner {
-  width: min(100%, var(--maxw));  /* reuses your --maxw setting */
-  margin-inline: auto;
-  padding: clamp(24px, 6vw, 72px) 20px;
-  color: #fff;
-}
-
-/* Titles over the image */
-.hero-title {
-  margin: 0;
-  font-weight: 800;
-  line-height: 1.05;
-  font-size: clamp(32px, 6vw, 64px);
-  text-shadow: 0 2px 14px rgba(0,0,0,.35);
-}
-.hero-sub {
-  margin: 6px 0 0;
-  font-weight: 600;
-  line-height: 1.15;
-  font-size: clamp(18px, 3.2vw, 28px);
-  opacity: .95;
-}
-
-/* Buttons on image: higher contrast */
-.hero-strip .btn.btn-primary {
-  background: rgba(255,255,255,0.08);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.25);
-  backdrop-filter: blur(4px);
-}
-.hero-strip .btn.btn-primary:hover { background: rgba(255,255,255,0.16); }
-
-/* Optional: if you want the image not to break out of the container,
-   delete width/margin/transform on .hero-strip and keep everything else. */
-
-   /* 1) Remove the gap between header and hero */
-section.hero-strip { margin-block: 0; }   /* overrides section { margin-block: 40px } */
-#main { padding-top: 0; }                 /* your .container adds 20px; zero it for the home page */
-/* If you prefer not to change #main globally, use this instead: */
-/* #main > .hero-strip { margin-top: -20px; }  /* cancels the container's top padding only for the hero */ 
-
-/* 2) Offset the background image upward (show more of the top of the photo) */
-.hero-strip.home-hero {
-  background-position: center 50%;        /* try 20–40% until it looks right */
-}
