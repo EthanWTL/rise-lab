@@ -1,13 +1,13 @@
 {
   "advisor": {
     "name": "Sheng Li",
-    "role": "Advisor, RISE Lab",
+    "role": "Advisor",
     "img": "images/people/sl.jpg",
-    "email": "shengli@virginia.edu",
-    "scholar": "https://scholar.google.com/...",
+    "email": "",
+    "scholar": "",
     "github": "",
-    "website": "https://cs.virginia.edu/~shengli",
-    "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+    "website": "https://sheng-li.org/",
+    "description": "Quantitative Foundation Associate Professor, University of Virginia"
   },
   "phd_students": [
     {
@@ -17,10 +17,10 @@
       "co_advisor": "",
       "img": "images/people/dqq.jpg",
       "email": "",
-      "scholar": "",
+      "scholar": "https://scholar.google.com/citations?user=FIa-pykAAAAJ&hl=en",
       "github": "",
-      "website": "",
-      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+      "website": "https://daiqing-qi.github.io/#1",
+      "description": "Research interests in Multimodal Large Language Models and Vision-Language Models. "
     },
     {
       "name": "Weili Shi",
@@ -29,10 +29,10 @@
       "co_advisor": "",
       "img": "images/people/wls.png",
       "email": "",
-      "scholar": "",
+      "scholar": "https://scholar.google.com/citations?user=elyMqnoAAAAJ&hl=en",
       "github": "",
       "website": "",
-      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+      "description": "Research interests in Transformer, Domain Adaptation, Visual Understanding."
     },
     {
       "name": "Dongliang Guo",
@@ -41,10 +41,10 @@
       "co_advisor": "",
       "img": "images/people/dlg.jpg",
       "email": "",
-      "scholar": "",
+      "scholar": "https://scholar.google.com/citations?user=uztQCmMAAAAJ&hl=en",
       "github": "",
-      "website": "",
-      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+      "website": "https://donglgcn.github.io/",
+      "description": "Research interests in  multi-modal learning, computer vision and Trustworthy learning (explainable AI, fairness)"
     },
     {
       "name": "Mengxuan Hu (Lucy)",
@@ -56,7 +56,7 @@
       "scholar": "https://scholar.google.com/citations?user=YC4WABEAAAAJ&hl=zh-CN",
       "github": "https://xuanxuan03021.github.io/",
       "website": "",
-      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+      "description": "Research interests in Trustworthy AI, especially on Large Language Models, Multimodal Foundation Models, and Generative AI, especially from a safety and fairness lens."
     },
     {
       "name": "Guangya Wan",
@@ -65,10 +65,10 @@
       "co_advisor": "",
       "img": "images/people/gyw.jpg",
       "email": "",
-      "scholar": "",
+      "scholar": "https://scholar.google.com/citations?user=Um_KuoYAAAAJ&hl=en",
       "github": "",
       "website": "",
-      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+      "description": "Research interests in Large Language Models, Causal Inference, Causal Discovery, Trustworthy Models"
     },
     {
       "name": "Hanzhang Yuan",
