@@ -196,6 +196,68 @@ background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 70%);
 .carousel-controls { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
 .carousel-controls .btn { min-width: 44px; }
 
+
+/* search bar*/ 
+/* Right side grouping (nav + search) */
+.header-right { display: flex; align-items: center; gap: 14px; margin-left: auto; }
+/* Boxy input */
+.site-search { position: relative; min-width: 280px; }
+.site-search input {
+  height: 40px;
+  padding: 0 88px 0 12px;      /* leave room for the two buttons on the right */
+  border-radius: 8px;          /* set 0 for perfectly square */
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.08);
+  color: var(--header-text);
+}
+.site-search input::placeholder { color: rgba(255,255,255,0.7); }
+.site-search input:focus {
+  border-color: #E57200;
+  box-shadow: 0 0 0 2px rgba(229,114,0,0.25);
+}
+
+/* Magnifier INSIDE the box (no background, orange glyph) */
+.search-icon {
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px; height: 32px;
+  display: grid; place-items: center;
+  border: 0; background: transparent;
+  color: #E57200;               /* orange icon */
+  cursor: pointer;
+}
+
+/* Clear (X) INSIDE the box, with a subtle ring */
+.search-clear {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px; height: 32px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: var(--header-text);
+  cursor: pointer;
+}
+.search-clear:hover { border-color: rgba(255,255,255,0.4); }
+
+/* Results panel corners a bit boxier to match the input */
+.search-panel { border-radius: 10px; }
+
+/* Dark mode tweaks */
+@media (prefers-color-scheme: dark) {
+  .site-search input {
+    border-color: rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.06);
+  }
+  .search-panel { border-color: #374151; }
+}
+
+
 /* News */
 .news-list { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 .news-item { background: var(--card); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
