@@ -1,4 +1,14 @@
 {
+  "advisor": {
+    "name": "Sheng Li",
+    "role": "Advisor, RISE Lab",
+    "img": "images/people/sl.jpg",
+    "email": "shengli@virginia.edu",
+    "scholar": "https://scholar.google.com/...",
+    "github": "",
+    "website": "https://cs.virginia.edu/~shengli",
+    "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
+  },
   "phd_students": [
     {
       "name": "Daiqing Qi",
@@ -9,7 +19,8 @@
       "email": "",
       "scholar": "",
       "github": "",
-      "website": ""
+      "website": "",
+      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
     },
     {
       "name": "Weili Shi",
@@ -20,7 +31,8 @@
       "email": "",
       "scholar": "",
       "github": "",
-      "website": ""
+      "website": "",
+      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
     },
     {
       "name": "Dongliang Guo",
@@ -31,7 +43,8 @@
       "email": "",
       "scholar": "",
       "github": "",
-      "website": ""
+      "website": "",
+      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
     },
     {
       "name": "Mengxuan Hu (Lucy)",
@@ -42,7 +55,8 @@
       "email": "",
       "scholar": "https://scholar.google.com/citations?user=YC4WABEAAAAJ&hl=zh-CN",
       "github": "https://xuanxuan03021.github.io/",
-      "website": ""
+      "website": "",
+      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
     },
     {
       "name": "Guangya Wan",
@@ -53,7 +67,8 @@
       "email": "",
       "scholar": "",
       "github": "",
-      "website": ""
+      "website": "",
+      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
     },
     {
       "name": "Hanzhang Yuan",
@@ -64,7 +79,8 @@
       "email": "",
       "scholar": "",
       "github": "",
-      "website": ""
+      "website": "",
+      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
     },
     {
       "name": "Lehan Yang",
@@ -75,7 +91,8 @@
       "email": "",
       "scholar": "sample",
       "github": "sample",
-      "website": ""
+      "website": "",
+      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
     },
     {
       "name": "Tianlong Wang",
@@ -86,7 +103,8 @@
       "email": "sample",
       "scholar": "sample",
       "github": "sample",
-      "website": "sample"
+      "website": "sample",
+      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
     },
     {
       "name": "Wenhao Zhang",
@@ -97,7 +115,8 @@
       "email": "",
       "scholar": "https://scholar.google.com/citations?hl=en&user=8DDM3o0AAAAJ",
       "github": "",
-      "website": ""
+      "website": "",
+      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
     },
     {
       "name": "Pinqiao Wang",
@@ -108,18 +127,20 @@
       "email": "",
       "scholar": "https://scholar.google.com/citations?hl=en&user=V5daYRMAAAAJ",
       "github": "",
-      "website": "https://pinqiaowang.github.io/"
+      "website": "https://pinqiaowang.github.io/",
+      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
     },
     {
       "name": "Yuyang Cheng",
       "start": "Fall 2025",
       "end": "",
       "co_advisor": "",
-      "img": "images/people/yyc.png",
+      "img": "images/people/yyc.jpg",
       "email": "",
-      "scholar": "",
+      "scholar": "https://scholar.google.com/citations?hl=en&user=fRRf-PUAAAAJ",
       "github": "",
-      "website": ""
+      "website": "",
+      "description": "Research interests in trustworthy representation learning, visual intelligence, and interdisciplinary applications."
     }
   ],
   "ms_students": [
@@ -145,7 +166,7 @@
       "github": "",
       "website": ""
     }
-  ], 
+  ],
   "ug_students": [
     {
       "name": "Anaya Pronit Nath",
@@ -406,5 +427,4 @@
       "first_employment": ""
     }
   ]
-
 }
